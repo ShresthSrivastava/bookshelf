@@ -456,9 +456,11 @@ class Booklist(View):
     def get(self,request):
         try:
             bookAllList = Book.objects.exclude(user=request.user)
-            return render(request,'Book_list.html',{'books':bookAllList})
+            Genre_Options = Book.Genre_Options
+            return render(request,'Book_list.html',{'books':bookAllList,'Genre_Options':Genre_Options})
         except Exception as e:
                     print(f"Error in registration: {e}")
+
 
     def post(self,request):
         pass

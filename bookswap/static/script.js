@@ -25,6 +25,25 @@ function searchbook(){
     });
 }
 
+
+function filterchange(){
+    let selectedgenre = document.getElementById("genreFilter").value;
+    let books = document.querySelectorAll("#booklist li");
+
+    console.log("Filter triggered: ", selectedgenre);
+
+    books.forEach(book=>{
+        let bookgenre = book.getAttribute('data-genre')
+        if(selectedgenre === "" || bookgenre === selectedgenre){
+            book.style.display = "block";
+        }
+        else{
+            book.style.display = "none";
+        }
+    })
+}
+
+
 // window.onload(document.getElementById("toggleBtn").addEventListener("click",
 //     function (){
 //         console.log("button clicked")

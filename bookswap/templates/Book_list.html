@@ -12,11 +12,21 @@
     <body>
 
         <h1>📚 Explore Books</h1>
+        <label for="genreFilter">Filter genre:</label>
+        <select id="genreFilter" onchange='filterchange()'>
+            <option value="">All</option>
+            {% for genrekey, genrename in Genre_Options %}
+            <option value="{{genrekey}}">{{genrename}}</option>
+            {% endfor %}
+        </select>
+
+
+
         <input type="text" id="searchBox" placeholder="Search for a book..." onkeyup="searchbook()">
 
         <ul id="booklist" style="list-style-type:none;">
             {% for book in books%}
-                <li>
+                <li data-genre="{{book.genre }}">
                     <a href="{% url "book-detail-page" book.book_id %}">{{book.book_name}}</a>
                 </li>
             {% empty %}
